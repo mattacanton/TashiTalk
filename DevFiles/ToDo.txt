@@ -25,6 +25,7 @@ Possible ideas
 -Japanese text versions of the pages
 -Student can delete their account (save security data for time?)
 -Likely switch at least the user dashboard to a custom Angular dashboard if enough design time/money provided
+-Add user page with picture
 
 Critical issues
 ----
