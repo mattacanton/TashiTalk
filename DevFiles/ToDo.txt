@@ -41,3 +41,4 @@ Non critical Bugs
 -Add a remember login check box feature to only temp remember login
 -Move font awsome and other external elements onto site server for stability
 -Home page mobile menu on left.  Logged in mobile menu on right.  Probably want to standardize to right side (more right handed people)
+-Contact form success message is ugly in format, color, and poping in mid page
