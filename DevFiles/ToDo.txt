@@ -33,6 +33,7 @@ Critical issues
 -Build email account verification
 -Write Docs including things like Database, SESSION and other variables
 -Block Users from entering /userDashboard when not logged in ($_SESSION var check)
+-Add user type to database, add check user type and forward to correct page type function in user class and call from approprate pages
 
 Non critical Bugs
 ---

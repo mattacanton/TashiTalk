@@ -1,9 +1,32 @@
+<?php
+
+include ('../userSystem/userBase.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$contact_email = "personalbizemail@gmail.com";
+	$subject_email = "WatashiTalk CONTACT FORM message";
+
+	$message_email = $name_email = $entered_email_email = "";
+	$message_emailErr = "";
+
+	if(!isset($_POST['message'])){
+	$message_emailErr = "A message is required";
+	}
+	else{
+		$message_email = clean_input($_POST['email']);
+		$name_email = clean_input($_POST['name']);
+		$entered_email_email = clean_input($_POST['message']);
+
+		$headers = "From: watashiContact@watashi.me\r\n";
+		$headers .= "Return-Path: watashiContact@watashi.me\r\n";
+
+		mail($contact_email, $subject_email, "Name: " . $name_email .  "\nEmail: " . $entered_email_email . "\nMessage: " . $message_email,$headers);
+		print_r('sent');
+	}
+}
+?>
+
 <!DOCTYPE html>
-<!--
-	Transit by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -46,7 +69,7 @@
 					</header>
 				</div>
 				<div class="container 50%">
-					<form action="#" method="post">
+					<form action="" method="post">
 						<div class="row uniform">
 							<div class="6u 12u$(small)">
 								<input name="name" id="name" value="" placeholder="Name" type="text">
@@ -59,7 +82,7 @@
 							</div>
 							<div class="12u$">
 								<ul class="actions">
-									<li><input value="Send Message" class="special big" type="submit"></li>
+									<li><input value="Send Message" class="special big" name="submit" type="submit"></li>
 								</ul>
 							</div>
 						</div>
