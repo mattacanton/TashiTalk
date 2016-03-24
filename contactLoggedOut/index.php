@@ -21,7 +21,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$headers .= "Return-Path: watashiContact@watashi.me\r\n";
 
 		mail($contact_email, $subject_email, "Name: " . $name_email .  "\nEmail: " . $entered_email_email . "\nMessage: " . $message_email,$headers);
-		print_r('sent');
 	}
 }
 ?>
@@ -49,12 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.php">TashiTalk</a></h1>
+				<h1><a href="../">TashiTalk</a></h1>
 				<nav id="nav">
 					<ul>
-						<li><a href="./contactLoggedOut">Contact/Feedback</a></li>
-						<li><a href="./signUp" class="button special">Sign Up</a></li>
-                        <li><a href="./signIn" class="button special">Sign In</a></li>
+						<li><a href="../contactLoggedOut">Contact/Feedback</a></li>
+						<li><a href="../signUp" class="button special">Sign Up</a></li>
+                        <li><a href="../signIn" class="button special">Sign In</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -65,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="container">
 					<header class="major">
 						<h2>Contact us</h2>
-						<p>Contact us with questions or feedback.  We love to hear both!</p>
+						<p>Have questions or feedback?  We love to hear both!</p>
 					</header>
 				</div>
 				<div class="container 50%">
