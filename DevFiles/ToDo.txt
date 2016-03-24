@@ -40,3 +40,4 @@ Non critical Bugs
 -Selecting a saved input such as email in the input in chrome changes the login box to yellow
 -Add a remember login check box feature to only temp remember login
 -Move font awsome and other external elements onto site server for stability
+-Home page mobile menu on left.  Logged in mobile menu on right.  Probably want to standardize to right side (more right handed people)

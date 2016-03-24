@@ -6,8 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$contact_email = "personalbizemail@gmail.com";
 	$subject_email = "WatashiTalk CONTACT FORM message";
 
+	// Incoming POST vars
 	$message_email = $name_email = $entered_email_email = "";
+	// Error vars
 	$message_emailErr = "";
+	// Success vars
+	$success = "";
+
 
 	if(!isset($_POST['message'])){
 	$message_emailErr = "A message is required";
@@ -21,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$headers .= "Return-Path: watashiContact@watashi.me\r\n";
 
 		mail($contact_email, $subject_email, "Name: " . $name_email .  "\nEmail: " . $entered_email_email . "\nMessage: " . $message_email,$headers);
+		$success = "Sent!  If you included a email expect a response soon.";
 	}
 }
 ?>
@@ -65,6 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					<header class="major">
 						<h2>Contact us</h2>
 						<p>Have questions or feedback?  We love to hear both!</p>
+						<p id="successMsg"><?php echo $success;?></p>
 					</header>
 				</div>
 				<div class="container 50%">
