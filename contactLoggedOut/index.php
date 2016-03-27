@@ -103,10 +103,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<footer id="footer">
 				<div class="container">
 				    <!-- <div class="8u 1u$(medium)"> -->
-                        <ul class="copyright pull-left">
+                        <ul class="copyright text-left">
                             <li>&copy; TashiTalk. All rights reserved.</li>
                         </ul>
-				    <!-- </div> -->
+				    <!-- </div> -->
 				</div>
 			</footer>
 

@@ -10,6 +10,11 @@
 
 /* Basic */
 
+/*Success message upon mail send*/
+	#successMsg{
+		color: rgb(102, 255, 51);
+	}
+
 	body {
 		background: #fff;
 	}
@@ -1123,6 +1128,7 @@
 
 		.wrapper.style2 footer {
 			margin-left: auto;
+			margin-right: auto;
 			width: 70%;
 		}
 
