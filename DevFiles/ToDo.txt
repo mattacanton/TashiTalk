@@ -26,6 +26,7 @@ Possible ideas
 -Student can delete their account (save security data for time?)
 -Likely switch at least the user dashboard to a custom Angular dashboard if enough design time/money provided
 -Add user page with picture
+-Add more to the bottom of index page contact info ... to be like "others" as recomended
 
 Critical issues
 ----

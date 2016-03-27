@@ -141,11 +141,11 @@ if (isset($_SESSION['first_name'])) {
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="container">
-				    <div class="8u 1u$(medium)">
-                        <ul class="copyright">
+				    <!-- <div class="8u 1u$(xsmall)" > -->
+                        <ul class="copyright pull-left">
                             <li>&copy; TashiTalk. All rights reserved.</li>
                         </ul>
-				    </div>
+				    <!-- </div> -->
 				</div>
 			</footer>
         <script>
