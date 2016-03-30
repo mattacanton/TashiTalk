@@ -33,6 +33,7 @@ Critical issues
 -Build email account verification
 -Write Docs including things like Database, SESSION and other variables
 -Block Users from entering /userDashboard when not logged in ($_SESSION var check)
+-Add reCaptcha to contact form
 
 Non critical Bugs
 ---
