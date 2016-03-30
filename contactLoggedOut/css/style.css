@@ -10,6 +10,11 @@
 
 /* Basic */
 
+/*Success message upon mail send*/
+	#successMsg{
+		color: rgb(102, 255, 51);
+	}
+
 	body {
 		background: #fff;
 	}

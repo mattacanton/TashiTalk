@@ -42,7 +42,7 @@ if (isset($_SESSION['first_name'])) {
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.php">TashiTalk</a></h1>
+				<h1><a href="./">TashiTalk</a></h1>
 				<nav id="nav">
 					<ul>
 						<li><a href="./contactLoggedOut">Contact/Feedback</a></li>
@@ -141,11 +141,11 @@ if (isset($_SESSION['first_name'])) {
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="container">
-				    <div class="8u 1u$(medium)">
-                        <ul class="copyright">
+				    <!-- <div class="8u 1u$(medium)"> -->
+                        <ul class="copyright text-left">
                             <li>&copy; TashiTalk. All rights reserved.</li>
                         </ul>
-				    </div>
+				    <!-- </div> -->
 				</div>
 			</footer>
         <script>

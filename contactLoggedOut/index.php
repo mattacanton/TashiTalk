@@ -1,9 +1,39 @@
+<?php
+
+include ('../userSystem/userBase.php');
+
+	// Incoming POST vars
+	$message_email = $name_email = $entered_email_email = "";
+	// Error vars
+	$message_emailErr = "";
+	// Success vars
+	$success = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$contact_email = "personalbizemail@gmail.com";
+	$subject_email = "WatashiTalk CONTACT FORM message";
+
+
+	if(empty($_POST['message'])){
+	$message_emailErr = "A message is required";
+	$success = "";
+	}
+	else{
+		$message_email = clean_input($_POST['email']);
+		$name_email = clean_input($_POST['name']);
+		$entered_email_email = clean_input($_POST['message']);
+
+		$headers = "From: watashiContact@watashi.me\r\n";
+		$headers .= "Return-Path: watashiContact@watashi.me\r\n";
+
+		mail($contact_email, $subject_email, "Name: " . $name_email .  "\nEmail: " . $entered_email_email . "\nMessage: " . $message_email,$headers);
+		$message_emailErr = "";
+		$success = "Sent!  If you included a email expect a response soon.";
+	}
+}
+?>
+
 <!DOCTYPE html>
-<!--
-	Transit by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -26,12 +56,12 @@
 
 		<!-- Header -->
 			<header id="header">
-				<h1><a href="index.php">TashiTalk</a></h1>
+				<h1><a href="../">TashiTalk</a></h1>
 				<nav id="nav">
 					<ul>
-						<li><a href="./contactLoggedOut">Contact/Feedback</a></li>
-						<li><a href="./signUp" class="button special">Sign Up</a></li>
-                        <li><a href="./signIn" class="button special">Sign In</a></li>
+						<li><a href="../contactLoggedOut">Contact/Feedback</a></li>
+						<li><a href="../signUp" class="button special">Sign Up</a></li>
+                        <li><a href="../signIn" class="button special">Sign In</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -42,11 +72,13 @@
 				<div class="container">
 					<header class="major">
 						<h2>Contact us</h2>
-						<p>Contact us with questions or feedback.  We love to hear both!</p>
+						<p>Have questions or feedback?  We love to hear both!</p>
+						<p id="successMsg"><?php echo $success;?></p>
+						<p id="successMsg"><?php echo $message_emailErr;?></p>
 					</header>
 				</div>
 				<div class="container 50%">
-					<form action="#" method="post">
+					<form action="" method="post">
 						<div class="row uniform">
 							<div class="6u 12u$(small)">
 								<input name="name" id="name" value="" placeholder="Name" type="text">
@@ -59,7 +91,7 @@
 							</div>
 							<div class="12u$">
 								<ul class="actions">
-									<li><input value="Send Message" class="special big" type="submit"></li>
+									<li><input value="Send Message" class="special big" name="submit" type="submit"></li>
 								</ul>
 							</div>
 						</div>
@@ -70,11 +102,11 @@
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="container">
-				    <div class="8u 1u$(medium)">
-                        <ul class="copyright">
+				    <!-- <div class="8u 1u$(medium)"> -->
+                        <ul class="copyright text-left">
                             <li>&copy; TashiTalk. All rights reserved.</li>
                         </ul>
-				    </div>
+				    <!-- </div> -->
 				</div>
 			</footer>
 

@@ -26,6 +26,7 @@ Possible ideas
 -Student can delete their account (save security data for time?)
 -Likely switch at least the user dashboard to a custom Angular dashboard if enough design time/money provided
 -Add user page with picture
+-Add more to the bottom of index page contact info ... to be like "others" as recomended
 
 Critical issues
 ----
@@ -33,6 +34,7 @@ Critical issues
 -Build email account verification
 -Write Docs including things like Database, SESSION and other variables
 -Block Users from entering /userDashboard when not logged in ($_SESSION var check)
+-Add user type to database, add check user type and forward to correct page type function in user class and call from approprate pages
 -Add reCaptcha to contact form
 
 Non critical Bugs
@@ -40,3 +42,5 @@ Non critical Bugs
 -Selecting a saved input such as email in the input in chrome changes the login box to yellow
 -Add a remember login check box feature to only temp remember login
 -Move font awsome and other external elements onto site server for stability
+-Home page mobile menu on left.  Logged in mobile menu on right.  Probably want to standardize to right side (more right handed people)
+-Contact form success message is ugly in format, color, and poping in mid page
