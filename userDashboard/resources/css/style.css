@@ -2,3 +2,7 @@ body {
   padding-top: 50px;
   background-color: #E6E6FA;
 }
+
+.well.switchboard{
+    text-align: center;
+}
