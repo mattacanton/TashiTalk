@@ -1,10 +1,3 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-print_r($_POST);
-print_r($_FILES);
-}
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
