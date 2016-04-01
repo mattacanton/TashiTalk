@@ -1,3 +1,10 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+print_r($_POST);
+print_r($_FILES);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,6 +12,7 @@
 		<meta charset="utf-8"/>
 		<script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 		<script src="https://cdn.webrtc-experiment.com/gumadapter.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
 
 		<script>
@@ -44,9 +52,29 @@
 	            console.log(window.URL.createObjectURL(recordedBlob));
 	            console.log("reached");
 				video.src = window.URL.createObjectURL(recordedBlob);
-
+				var videoBlob = new Blob ([recordedBlob]);
+		   		uploadAudio(videoBlob);
 		    });
+
 		};
+
+		function uploadAudio( blob ) {
+		  var reader = new FileReader();
+		  reader.onload = function(event){
+		    var fd = {};
+		    fd["fname"] = "test.wav";
+		    fd["data"] = event.target.result;
+		    $.ajax({
+		      type: 'POST',
+		      url: 'uploader.php',
+		      data: fd,
+		      dataType: 'text'
+		    }).done(function(data) {
+		        console.log(data);
+		    });
+		  };
+		  reader.readAsDataURL(blob);
+		}
 		</script>
 	</head>
 	<body>

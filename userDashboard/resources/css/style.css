@@ -6,3 +6,7 @@ body {
 .well.switchboard{
     text-align: center;
 }
+
+hr {
+    border-color:grey;
+}
