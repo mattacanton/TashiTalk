@@ -58,7 +58,7 @@
 	            var playerOne = document.getElementById("attemptOnePlayer");
 				playerOne.src = window.URL.createObjectURL(recordedBlob);
 				var attemptOneBlob = new Blob ([recordedBlob]);
-		   		uploadAudio(videoBlob);
+		   		// uploadAudio(videoBlob);
 		    });
 
 		};
@@ -165,9 +165,9 @@
 	    	<div class="well switchboard">Attempt 1 of 3
             <br>
             <br>
-            <video id="attemptOne" class="scaling-video-sm invisible" controls autoplay="true" src=""></video>
+            <video id="attemptOnePlayer" class="scaling-video-sm" controls autoplay="true" src=""></video>
             <button type="button" class="btn btn-warning" onclick="btnStartRecording()">Record Response</button>
-            <button type="button" class="btn btn-success">End Recording</button>
+            <button type="button" class="btn btn-success" onclick="btnStopRecordingFirst()">End Recording</button>
             </div>
 	    </div>
 	    <div class="col-sm-4">
