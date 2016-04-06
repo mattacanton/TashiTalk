@@ -10,3 +10,19 @@ body {
 hr {
     border-color:grey;
 }
+
+video.scaling-video{
+	width: 100%    !important;
+  	height: auto   !important;
+  	min-width: 200px;
+}
+
+video.scaling-video-sm{
+	width: 100%    !important;
+  	height: auto   !important;
+  	min-width: 200px;
+}
+
+.invisible{
+	visibility: hidden;
+}

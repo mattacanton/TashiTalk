@@ -4,12 +4,85 @@
     <meta charset="utf-8">
     <title>TashiTalk</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="../siteWideResources/jqery-2.2.2.min.js"></script>
+    <script src="../siteWideResources/jquery-2.2.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="resources/css/style.css">
+    <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+	<script src="https://cdn.webrtc-experiment.com/gumadapter.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!--     <script src="script.js"></script> -->
+      
+<!--     Record RTC Javascript-->
+     <script>
+		var recordRTC;
+		var cameraStream;
+		var streamStarted = false;
+
+		function btnStartRecording() {
+		    // RecordRTC usage goes here
+		    if (streamStarted){	
+			    var options = {
+			      mimeType: 'video/webm', // or video/mp4 or audio/ogg
+			      audioBitsPerSecond: 128000,
+			      videoBitsPerSecond: 128000,
+			      bitsPerSecond: 128000 // if this line is provided, skip above two
+			    };
+			    recordRTC = RecordRTC(cameraStream, options);
+			    recordRTC.startRecording();
+			}
+		}
+         
+        function successCallback(stream) {
+                var videoStream = document.getElementById("streamWebcam");
+                videoStream.src = window.URL.createObjectURL(stream);
+                cameraStream = stream;
+                streamStarted = true;
+        }
+
+		function errorCallback(error) {
+		    // maybe another application is using the device
+		}
+
+		var mediaConstraints = { video: true, audio: true };
+
+		navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
+
+		function btnStopRecordingFirst () {
+				           
+		    recordRTC.stopRecording(function (audioVideoWebMURL) {
+		        //video.src = audioVideoWebMURL;
+		        var recordedBlob = recordRTC.getBlob();
+		        recordRTC.getDataURL(function(dataURL) { });
+	            var playerOne = document.getElementById("attemptOnePlayer");
+				playerOne.src = window.URL.createObjectURL(recordedBlob);
+				var attemptOneBlob = new Blob ([recordedBlob]);
+		   		uploadAudio(videoBlob);
+		    });
+
+		};
+
+		// function uploadAudio( blob ) {
+		//   var reader = new FileReader();
+		//   reader.onload = function(event){
+		//     var fd = {};
+		//     fd["fname"] = "test.wav";
+		//     fd["data"] = event.target.result;
+		//     $.ajax({
+		//       type: 'POST',
+		//       url: 'uploader.php',
+		//       data: fd,
+		//       dataType: 'text'
+		//     }).done(function(data) {
+		//         console.log(data);
+		//     });
+		//   };
+		//   reader.readAsDataURL(blob);
+		// }
+    </script>
+      
+      
   </head>
   <body>
 
@@ -65,13 +138,17 @@
   <div class="text-center" >
     <h1>Schedule Prompt 1</h1>
   </div>
-<div class="media">
-  <a class="media-left" href="#">
-    <img class="media-object" data-src="../uploadedMaterial/teachers/promptPicture.png" src="../uploadedMaterial/teachers/promptPicture.png" alt="Attempt 1">
-  </a>
-  <div class="media-body">
+<div class="row">
+  <div class="col-sm-6">
+    <img class="img-responsive pull-right" src="../uploadedMaterial/teachers/promptPicture.png" alt="Attempt 1">
+  </div>
+  <div class="col-sm-6">
     <h4 class="media-heading">Instructions:</h4>
     Greet Tanakasan (person A) and tell him what you are doing Wednesday at 6:30PM, Monday next week and Wednesday the week after.
+
+    <br>
+    <br>
+    <video id="streamWebcam" muted class="scaling-video" autoplay="true" src=""></video>
   </div>
 </div>
     
@@ -85,7 +162,13 @@
 	<div class="row">
 	    <div class="col-sm-4">
             Attempt 1
-	    	<div>Chat with Partners</div>
+	    	<div class="well switchboard">Attempt 1 of 3
+            <br>
+            <br>
+            <video id="attemptOne" class="scaling-video-sm invisible" controls autoplay="true" src=""></video>
+            <button type="button" class="btn btn-warning" onclick="btnStartRecording()">Record Response</button>
+            <button type="button" class="btn btn-success">End Recording</button>
+            </div>
 	    </div>
 	    <div class="col-sm-4">
             Attempt 2
