@@ -29,7 +29,7 @@
   </br>
   </br>
   <div class="text-center" style="font-family: 'Montserrat', sans-serif;" >
-    <p class="lead" style="font-size:200%;">Your Assignments:<br></p>
+    <p class="lead" style="font-size:200%;">Prompts:<br></p>
         <ul class="list-group">
         <?php
           $query = 'SELECT * FROM Assignments';

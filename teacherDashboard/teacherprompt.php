@@ -38,7 +38,7 @@
 	<br>
 	<br>
 	<body>
-		 <h3>Please Enter Information Create a Prompt</h3><br>
+		 <h3>Please Enter Information to Create a Prompt</h3><br>
 		 
 		<form action="teacherprompt_display.php" method="post" padding-left: 2cm; enctype="multipart/form-data">
 			<div id="prompt_form">
