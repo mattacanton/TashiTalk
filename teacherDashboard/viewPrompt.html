@@ -4,16 +4,12 @@
     <meta charset="utf-8">
     <title>TashiTalk</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- <script src="../siteWideResources/jquery-2.2.2.min.js"></script> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <script src="../siteWideResources/jquery-2.2.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="stylesheet" href="../siteWideResources/animate.css">
     <script src="https://cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
 	<script src="https://cdn.webrtc-experiment.com/gumadapter.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
-    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-    <script type='text/javascript' src="../siteWideResources/jquery-2.2.2.min.js"></script>
-	<script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <!--     <script src="script.js"></script> -->
@@ -23,7 +19,6 @@
 		var recordRTC;
 		var cameraStream;
 		var streamStarted = false;
-		var currentAttempt = 1;
 
 		function btnStartRecording() {
 		    // RecordRTC usage goes here
@@ -60,22 +55,8 @@
 		        //video.src = audioVideoWebMURL;
 		        var recordedBlob = recordRTC.getBlob();
 		        recordRTC.getDataURL(function(dataURL) { });
-		        if (currentAttempt == 1){
-		            var playerOne = document.getElementById("attemptOnePlayer");
-					playerOne.src = window.URL.createObjectURL(recordedBlob);
-					currentAttempt = 2;
-				}
-				else if (currentAttempt == 2){
-		            var playerTwo = document.getElementById("attemptTwoPlayer");
-					playerTwo.src = window.URL.createObjectURL(recordedBlob);
-					currentAttempt = 3;
-				}
-				else if (currentAttempt == 3){
-		            var playerThree = document.getElementById("attemptThreePlayer");
-					playerThree.src = window.URL.createObjectURL(recordedBlob);
-					currentAttempt = 4;
-				}
-
+	            var playerOne = document.getElementById("attemptOnePlayer");
+				playerOne.src = window.URL.createObjectURL(recordedBlob);
 				var attemptOneBlob = new Blob ([recordedBlob]);
 		   		// uploadAudio(videoBlob);
 		    });
@@ -167,8 +148,6 @@
 
     <br>
     <br>
-    <button type="button" class="btn btn-warning" onclick="btnStartRecording()">Record Response</button>
-    <button type="button" class="btn btn-success" onclick="btnStopRecordingFirst()">End Recording</button>
     <video id="streamWebcam" muted class="scaling-video" autoplay="true" src=""></video>
   </div>
 </div>
@@ -182,26 +161,31 @@
 <div class="container">
 	<div class="row">
 	    <div class="col-sm-4">
+            Attempt 1
 	    	<div class="well switchboard">Attempt 1 of 3
-            <video id="attemptOnePlayer" class="scaling-video-sm" controls src=""></video>
-            <button type="button" class="btn btn-primary">Submit this Attempt</button>
+            <br>
+            <br>
+            <video id="attemptOnePlayer" class="scaling-video-sm" controls autoplay="true" src=""></video>
+            <button type="button" class="btn btn-warning" onclick="btnStartRecording()">Record Response</button>
+            <button type="button" class="btn btn-success" onclick="btnStopRecordingFirst()">End Recording</button>
             </div>
 	    </div>
 	    <div class="col-sm-4">
-	    	<div class="well switchboard">Attempt 2 of 3
-	    	<video id="attemptTwoPlayer" class="scaling-video-sm" controls src=""></video>
-            <button type="button" class="btn btn-primary">Submit this Attempt</button>
-	    	</div>
-
+            Attempt 2
+	    	<div class="well switchboard">Lessons</div>
 	    </div>
-	    <div class="col-sm-4"
->	    	<div class="well switchboard">Attempt 3 of 3
-	    	<video id="attemptThreePlayer" class="scaling-video-sm" controls src=""></video>
-            <button type="button" class="btn btn-primary">Submit this Attempt</button>
-	    	</div>
+	    <div class="col-sm-4">
+            Attempt 3
+	    	<div class="well switchboard">Practice with Prompts</div>
 	    </div>
 	</div>
 </div>
+
+
+	<!-- Scripts -->
+
+<script type='text/javascript' src="../siteWideResources/jquery-2.2.2.min.js"></script>
+<script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   </body>
 </html>

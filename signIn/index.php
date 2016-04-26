@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   					$_SESSION["first_name"] = $row['first_name'];
   					$_SESSION["last_name"] = $row['last_name'];
   					$_SESSION["email"] = $login_email;
+  					$_SESSION["user_number"] = $row['userNumber'];
 
   					//Redirect to User Dashboard
   					header("location: ../userDashboard/");
@@ -103,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <div class="grid__container">
-        <center><img src="images/logo.png" alt="logo" align="middle" >
+        <center><img src="images/TT_mid.png" alt="logo" align="middle" >
         <br>
         <br>
         <br>

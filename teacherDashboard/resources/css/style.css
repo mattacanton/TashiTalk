@@ -1,0 +1,28 @@
+body {
+  padding-top: 50px;
+  background-color: #E6E6FA;
+}
+
+.well.switchboard{
+    text-align: center;
+}
+
+hr {
+    border-color:grey;
+}
+
+video.scaling-video{
+	width: 100%    !important;
+  	height: auto   !important;
+  	min-width: 200px;
+}
+
+video.scaling-video-sm{
+	width: 100%    !important;
+  	height: auto   !important;
+  	min-width: 200px;
+}
+
+.invisible{
+	visibility: hidden;
+}

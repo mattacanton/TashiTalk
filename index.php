@@ -55,12 +55,7 @@ if (isset($_SESSION['first_name'])) {
 		<!-- Banner -->
 			<section id="banner">
 				<h2>Hi. This is TashiTalk.</h2>
-				<p>Learn and speak with a Japanese or English partner free.</p>
-				<ul class="actions">
-					<li>
-						<a href="#one" class="button big">Learn more!</a>
-					</li>
-				</ul>
+				<p>Learn and speak with a Japanese or English partner for FREE.</p>
 			</section>
 
 		<!-- One -->
@@ -80,15 +75,15 @@ if (isset($_SESSION['first_name'])) {
 						</div>
 						<div class="4u 12u$(medium)">
 							<section class="box">
-								<i class="icon big rounded color9 fa-desktop"></i>
+								<i class="icon big rounded color9 fa-desktop"></i></a>
 								<h3>View Language Lessons</h3>
-								<p>View and study profesional Japanese or English language lessons collage students use for free!</p>
+								<p>View and study professional Japanese or English language lessons collage students use for free!</p>
 							</section>
 						</div>
 						<div class="4u$ 12u$(medium)">
 							<section class="box">
 								<i class="icon big rounded color6 fa-video-camera"></i>
-								<h3>Practice with Prompts</h3>
+								<h3>Video Quizzes</h3>
 								<p>Practice responding via webcam to a variety of prompts.  If you have a teacher they can assign or review recordings.</p>
 							</section>
 						</div>
@@ -101,7 +96,7 @@ if (isset($_SESSION['first_name'])) {
 				<div class="container">
 					<header class="major">
 						<h2>Teacher's can use TashiTalk too!</h2>
-						<p>Assign and recieve student submited live chat recordings and prompts</p>
+						<p>Assign and receive student submitted live chat recordings and prompts</p>
 					</header>
 					<div class="row 150%">
 
@@ -109,17 +104,20 @@ if (isset($_SESSION['first_name'])) {
 							<section class="box">
 								<i class="icon big rounded color1 fa-comments"></i>
 								<h3>Assign Live Chat</h3>
-								<p>Create a live chat assignments.  Your students can share chat session clips they submit to fufill the assignements.</p>
+								<p>Create a live chat assignments.  Your students can share chat session clips they submit to fulfill the assignements.</p>
 							</section>
 						</div>
 						<div class="6u$ 12u$(medium)">
 							<section class="box">
 								<i class="icon big rounded color6 fa-video-camera" ></i>
-								<h3>Assign Prompts</h3>
+								<h3>Assign video Quizzes</h3>
 								<p>Assign a prompt text video or otherwise.  Your students can submit their video recorded responses.</p>
 							</section>
 						</div>
                     </div>
+					<header class="major">
+						<h2>Please Contact Us to Recieve Teacher Authorization</h2>
+					</header>
 				</div>
 			</section>
 
