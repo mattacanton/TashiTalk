@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<?php include ('../userSystem/userBase.php'); 
+<?php
+//======================================================================
+// author-Daniel Baggott
+// Apr 26 2016
+//
+// viewPrompt.php
+// Displays assignment/prompt picture allowing the user to record 3
+// video response attempts and submit one.
+// expected input: Webcam and clicking record, stop record, and submit buttons
+// possible output: A video file
+//======================================================================
+
+include ('../userSystem/userBase.php'); 
 require_once('mysqli_connect.php');
 include ('../siteWideResources/userCheck.php');
+
+//Sets the incoming session into session variables via get form method
 if(isset($_GET['assignment_id'])){$_SESSION['assignment_id'] = $_GET['assignment_id'];} 
 if(isset($_GET['teacher_id'])){$_SESSION['teacher_id'] = $_GET['teacher_id'];} 
 if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -24,13 +38,12 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <?php
+    //Pulls the specific assignment row from the database.
     $assignment_id = $_SESSION['assignment_id'];
     $query = "SELECT * FROM Assignments WHERE assign_id=".$assignment_id;
 	$result = mysqli_query($dbc, $query);
 	$row=mysqli_fetch_assoc($result);
     ?>
-
-<!--     <script src="script.js"></script> -->
       
 <!--     Record RTC Javascript-->
      <script>
@@ -43,8 +56,12 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 		var attemptTwoBlob = null;
 		var attemptThreeBlob = null;
 
+
+		// -----------------------------------------------
+		// Starts recording video from the webcam.
+		// -----------------------------------------------
 		function btnStartRecording() {
-		    // RecordRTC usage goes here
+			// Initialize on click if stream already started
 		    if (streamStarted){	
 			    var options = {
 			      mimeType: 'video/webm', // or video/mp4 or audio/ogg
@@ -52,11 +69,15 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 			      videoBitsPerSecond: 128000,
 			      bitsPerSecond: 128000 // if this line is provided, skip above two
 			    };
+			    //Start recording call
 			    recordRTC = RecordRTC(cameraStream, options);
 			    recordRTC.startRecording();
 			}
 		}
          
+        // -----------------------------------------------
+        // Shows the webcam video live on screen
+        // -----------------------------------------------
         function successCallback(stream) {
                 var videoStream = document.getElementById("streamWebcam");
                 videoStream.src = window.URL.createObjectURL(stream);
@@ -64,33 +85,47 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
                 streamStarted = true;
         }
 
+        // -----------------------------------------------
+        // If error with webcam access this method
+        // is run.  Useful for error notification.
+        // -----------------------------------------------
 		function errorCallback(error) {
-		    // maybe another application is using the device
+		    
 		}
 
+		//Setting up required constraints and access for recording
 		var mediaConstraints = { video: true, audio: true };
-
 		navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
 
+
+		// -----------------------------------------------
+		// This function stops the recording and stores the
+		// video recorded for tracking and sets the html
+		// to display a compatable version.
+		// -----------------------------------------------
 		function btnStopRecordingFirst () {
-				           
+			
+			//Stop recording create and pass video blob
+			//assign to tracking and set viewable 	           
 		    recordRTC.stopRecording(function (audioVideoWebMURL) {
-		        //video.src = audioVideoWebMURL;
 		        var recordedBlob = recordRTC.getBlob();
 		        recordRTC.getDataURL(function(dataURL) { });
+		  		
+		  		//If first attempt set recorded video to display and track it 
 		        if (currentAttempt == 1){
 		            var playerOne = document.getElementById("attemptOnePlayer");
 					playerOne.src = window.URL.createObjectURL(recordedBlob);
 					attemptOneBlob = new Blob ([recordedBlob]);
 					currentAttempt = 2;
-
 				}
+				//If seccond attempt set recorded video to display and track it 
 				else if (currentAttempt == 2){
 		            var playerTwo = document.getElementById("attemptTwoPlayer");
 					playerTwo.src = window.URL.createObjectURL(recordedBlob);
 					attemptTwoBlob = new Blob ([recordedBlob]);
 					currentAttempt = 3;
 				}
+				//If third attempt set recorded video to display and track it 
 				else if (currentAttempt == 3){
 		            var playerThree = document.getElementById("attemptThreePlayer");
 					playerThree.src = window.URL.createObjectURL(recordedBlob);
@@ -100,9 +135,14 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 		    });
 
 		};
-
+				
+		// -----------------------------------------------
+		// Encode and pass the blob to a file to handle
+		// upload and saving.
+		// -----------------------------------------------
 		function uploadAttempt( blob ) {
 		  var reader = new FileReader();
+		  //when reader loaded begin setting data and constraints
 		  reader.onload = function(event){
 		    var fd = {};
 		    fd["fname"] = "test.wav";
@@ -116,9 +156,15 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 		        console.log(data);
 		    });
 		  };
+		  //reads data in
 		  reader.readAsDataURL(blob);
 		  setTimeout(redirect, 6000)
 		}
+
+		// -----------------------------------------------
+		// After upload redirect the user to the upload
+		// complete page.
+		// -----------------------------------------------
 		function redirect(){
 			document.location.href = 'submitted.php';
 		}
@@ -145,7 +191,6 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
   <div class="col-sm-6">
     <h4 class="media-heading">Instructions:</h4>
     <?php echo $row['prompt_text']; ?>
-
     <br>
     <br>
     <button type="button" class="btn btn-warning" onclick="btnStartRecording()">Record Response</button>
@@ -159,7 +204,7 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 </div><!-- /.container -->
 
 
-<!--      Main Site Options-->
+<!--  Display attempts with upload option  -->
 <div class="container">
 	<div class="row">
 	    <div class="col-sm-4">
@@ -175,8 +220,8 @@ if(isset($_GET['class_id'])){$_SESSION['class_id'] = $_GET['class_id'];} ?>
 	    	</div>
 
 	    </div>
-	    <div class="col-sm-4"
->	    	<div class="well switchboard">Attempt 3 of 3
+	    <div class="col-sm-4">
+	       	<div class="well switchboard">Attempt 3 of 3
 	    	<video id="attemptThreePlayer" class="scaling-video-sm" controls src=""></video>
             <button type="button" class="btn btn-primary" onclick="uploadAttempt(attemptThreeBlob)" >Submit this Attempt</button>
 	    	</div>

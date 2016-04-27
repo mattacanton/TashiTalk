@@ -1,3 +1,13 @@
+<!-- //======================================================================
+// author-Daniel Baggott
+// Apr 26 2016
+//
+// assignment.php
+// 
+// expected input: mouse clicks
+// possible output: redirection to assignment view page with relevant data for specific assignment retrieval 
+//====================================================================== -->
+
 <!DOCTYPE html>
 <?php include ('../userSystem/userBase.php');
   require_once('mysqli_connect.php'); ?>
@@ -14,8 +24,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
      <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
-<!--     <script src="script.js"></script> -->
   </head>
   <body>
 
@@ -29,12 +37,15 @@
   </br>
   </br>
   <div class="text-center" style="font-family: 'Montserrat', sans-serif;" >
+
+      <!-- descriptive text print -->
     <p class="lead" style="font-size:200%;">Prompts:<br></p>
+        <!-- Print the assignments in a list -->
         <ul class="list-group">
         <?php
           $query = 'SELECT * FROM Assignments';
           $result = mysqli_query($dbc, $query);
-
+            //For each assignment make a list entry
            while ($row=mysqli_fetch_assoc($result)) { 
               $assignment_id=$row['assign_id'];
               $assignmnet_name=$row['prompt_name'];

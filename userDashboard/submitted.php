@@ -1,3 +1,12 @@
+<!-- //======================================================================
+// author-Daniel Baggott
+// Apr 26 2016
+//
+// submitted.php
+// Shows submissin confirmation message and allows redirect to user dashboard.
+// expected input: none
+// possible output: none
+//====================================================================== -->
 <!DOCTYPE html>
 <?php include ('../userSystem/userBase.php');
   require_once('mysqli_connect.php'); ?>
@@ -12,8 +21,6 @@
     <link rel="stylesheet" href="resources/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
-<!--     <script src="script.js"></script> -->
   </head>
   <body>
 
@@ -21,7 +28,7 @@
     <?php include 'navbar.php' ?>
 
       
-<!--      Assignment display-->
+<!--      Show submission confirmation message and continue to dashboard button.    -->
 <div class="container" >
 <div class="text-center" >
 <i class="fa fa-envelope" style="font-size: 310px;" aria-hidden="true"></i>

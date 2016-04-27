@@ -1,3 +1,13 @@
+<!-- //======================================================================
+// author-Daniel Baggott
+// Apr 26 2016
+//
+// index.php
+// Provides access to user site features.  Shows acctively assigned assignments.
+// expected input: mouse clicks
+// possible output: page change
+//====================================================================== -->
+
 <!DOCTYPE html>
 <?php include ('../userSystem/userBase.php');
   require_once('mysqli_connect.php'); ?>
@@ -14,8 +24,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
      <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-
-<!--     <script src="script.js"></script> -->
   </head>
   <body>
 
@@ -27,9 +35,11 @@
 <div class="container" >
   
   <div class="text-center" style="font-family: 'Montserrat', sans-serif;" >
+      <!-- Print welcome message -->
     <h1 style="font-size:375%;" >Hello <?php echo $_SESSION["first_name"] ?>!</h1>
     </br>
 
+      <!-- Print assignments -->
     <p class="lead">Assignments:<br></p>
         <ul class="list-group">
         <?php
@@ -52,7 +62,7 @@
 </div><!-- /.container -->
 
 
-<!--      Main Site Options-->
+<!--      Main site feature links   -->
 <div class="container">
 	<div class="row">
 	    <div class="col-sm-4">
@@ -77,7 +87,7 @@
 </div>
 
 
-	<!-- Scripts -->
+	<!-- Late Scripts -->
 
 <script type='text/javascript' src="../siteWideResources/jquery-2.2.2.min.js"></script>
 <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

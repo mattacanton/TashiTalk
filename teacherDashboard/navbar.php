@@ -27,8 +27,8 @@
 				<!--  <li class="active"> -->
 				<li><a href='index.php'>Back to Dashboard</a></li>
 				<li><a href='classStart.php'>Create a Class</a></li>
-				<li><a href='teacherprompt.php'>Create Assignment</a></li>
-				<li><a href="gradeselect.php">Grade Assignments</a></li>
+				<li><a href='teacherPrompt.php'>Create Assignment</a></li>
+				<li><a href="gradeSelect.php">Grade Assignments</a></li>
               
 				<!--Dropdown-->
 				<li class="dropdown">

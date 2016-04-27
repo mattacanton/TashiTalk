@@ -1,4 +1,13 @@
 <?php
+//======================================================================
+// author-Daniel Baggott
+// Apr 26 2016
+//
+// signIn/index.php
+// Processes login
+// expected input: none
+// possible output: Forward to user dashboard upon successful login and set session variable.
+//======================================================================
 
 include ('../userSystem/userBase.php');
 
@@ -36,16 +45,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        //Clean the variables
        $login_email = clean_input($login_email);
        $login_password = clean_input($login_password);
-
+       //If no errors continue logging in
        if(($login_emailErr == "") and ($login_passwordErr == "")) {
 
 	      	//Variables
 	      	$retrieved_password_hash = "";
 
 	        //Retrieves login if it exists
-			$sql = "SELECT * FROM users WHERE email = :login_email"; 
+			    $sql = "SELECT * FROM users WHERE email = :login_email"; 
 	        $query = $db->prepare( $sql );
 	        $query->execute( array( ':login_email'=>$login_email ) );
+          //If the user row exists retrieve password hash
           if ($query->rowCount() > 0){
 
   		        $row = $query->fetch();
@@ -55,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   				//verify password
   				$password_valid = password_verify($login_password, $retrieved_password_hash);
 
+          //If password matches hassed password continue log in
   				if ($password_valid){
   					//Sign in successful
 
@@ -104,12 +115,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
         <div class="grid__container">
+        <!-- logo -->
         <center><img src="images/TT_mid.png" alt="logo" align="middle" >
         <br>
         <br>
         <br>
         </center>
-
+          <!-- Login Form -->
           <form action="" method="post" class="form form--login">
 
           	<span class="error-message"><?php echo $login_invalidErr;?></span>

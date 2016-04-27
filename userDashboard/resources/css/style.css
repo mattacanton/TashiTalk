@@ -1,3 +1,12 @@
+/*//======================================================================
+// author-Daniel Baggott
+// Apr 26 2016
+//
+// style.css
+// Sets the style for use in user dashboard pages.
+// expected input: none
+// possible output: none
+//======================================================================*/
 body {
   padding-top: 50px;
   background-color: #E6E6FA;
