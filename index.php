@@ -1,4 +1,14 @@
 <?php
+//======================================================================
+// author-Daniel Baggott (attrabutions listed in /siteWideResouces)
+// Apr 26 2016
+//
+// index.php
+// describes the site features and links to 
+// login contact and feedback functionality
+// expected input: Linked click
+// possible output: Page displayed, no furthur output
+//======================================================================
 
 //Start session to access SESSION variables
 session_start();
@@ -18,7 +28,6 @@ if (isset($_SESSION['first_name'])) {
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
@@ -31,7 +40,7 @@ if (isset($_SESSION['first_name'])) {
 	</head>
 	<body class="landing">
         
-<!--		 Early Load Background set         -->
+<!--		 Early Load Background Color         -->
 <!--
         <style>
         body{
@@ -58,7 +67,7 @@ if (isset($_SESSION['first_name'])) {
 				<p>Learn and speak with a Japanese or English partner for FREE.</p>
 			</section>
 
-		<!-- One -->
+		<!-- Main Features for Students -->
 			<section id="one" class="wrapper style1 special">
 				<div class="container">
 					<header class="major">
@@ -91,7 +100,7 @@ if (isset($_SESSION['first_name'])) {
 				</div>
 			</section>
 
-		<!-- Two -->
+		<!-- Main Features for Teachers -->
 			<section id="two" class="wrapper style2 special">
 				<div class="container">
 					<header class="major">
@@ -121,7 +130,7 @@ if (isset($_SESSION['first_name'])) {
 				</div>
 			</section>
 
-		<!-- Three -->
+		<!-- Join Option -->
 			<section id="three" class="wrapper style3 special">
 				<div class="container">
 					<header class="major">
@@ -139,15 +148,17 @@ if (isset($_SESSION['first_name'])) {
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="container">
-				    <!-- <div class="8u 1u$(medium)"> -->
                         <ul class="copyright text-left">
                             <li>&copy; TashiTalk. All rights reserved.</li>
                         </ul>
-				    <!-- </div> -->
 				</div>
 			</footer>
         <script>
-//            Enables jQuery's smooth scrolling to #div tag
+           // -----------------------------------------------
+           // Enables jQuery's smooth scrolling to #div tag
+           // Currently unused on page.  Added to accomidate a earlier
+           // larger header, may be useful in the future.
+           // -----------------------------------------------
             $(document).ready(function(){
                 $('a[href^="#"]').on('click',function (e) {
                     e.preventDefault();

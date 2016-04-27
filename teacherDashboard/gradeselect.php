@@ -6,7 +6,14 @@
 	
 	$query = 'SELECT * FROM studentgrade';
 	$result = mysqli_query($dbc, $query);
-	if (!isset($grade)) { $grade = ''; } 
+	
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$grade=$_POST['grade'];
+		$query2 = 'UPDATE Submissions SET grade = '.$grade.' WHERE sub_id='."1";
+		$stmt2 = mysqli_prepare($dbc, $query2);
+		mysqli_stmt_execute($stmt2);
+		mysqli_stmt_close($stmt2);
+	}
 	?>
 	 <head>
     <meta charset="utf-8">
@@ -46,22 +53,25 @@
 		   <?php echo '<td>'.$row['last_name'].'</td>'; ?>
 		   <?php echo '<td>'.$row['class_name'].'</td>'; ?>
 		   <?php echo '<td>'.$row['class_id'].'</td>'; ?>
-		    <td><form action='#' method="post">
-			<select name="grade">
-				<option name="A" value="$grade">A</option>
-				<option name="A-" value="$grade">A-</option>
-				<option name="B+" value="B+">B+</option>
-				<option name="B" value="B">B</option>
-				<option name="B-" value="B-">B-</option>
-				<option name="C+" value="C+">C+</option>
-				<option name="C" value="C">C</option>
-				<option name="C-" value="C-">C-</option>
-				<option name="D+" value="D+">D+</option>
-				<option name="D" value="D">D</option>
-				<option name="D-" value="D-">D-</option>
-				<option name="F" value="F">F</option>
-			</select>
-			<input type="submit" name="submit" value="Submit"></td>
+		    <td>
+		    <form action=''method="post">
+				<select name="grade">
+					<option value="A">A</option>
+					<option value="A-">A-</option>
+					<option value="B+">B+</option>
+					<option value="B">B</option>
+					<option value="B-">B-</option>
+					<option value="C+">C+</option>
+					<option value="C">C</option>
+					<option value="C-">C-</option>
+					<option value="D+">D+</option>
+					<option value="D">D</option>
+					<option value="D-">D-</option>
+					<option value="F">F</option>
+				</select>
+			<input type="submit" value="Submit">
+			</form>
+			</td>
 	</tr>
 	<?php }
 	;?>    

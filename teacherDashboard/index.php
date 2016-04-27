@@ -1,3 +1,21 @@
+<?php
+//======================================================================
+// author-Matthew Canton
+//======================================================================
+
+//-----------------------------------------------------
+// teacher dashboard
+// connects to all aspects for teacher functions
+//-----------------------------------------------------
+
+/* index.php */
+
+/*
+* connects to teacherprompt.php
+* connects to classStart.php
+* connects to gradeselect.php
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -44,7 +62,7 @@
 		<!-- Create a class column-->
 		<div class="col-lg-4">
 			<a href="classStart.php" >
-				<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+				<img class="img-circle" src="resources/images/add.png" alt="Generic placeholder image" width="140" height="140">
 			</a>
 		  <h2>Start a Class</h2>
           <p>Start a class for students to join!</p>
@@ -52,15 +70,15 @@
         </div><!-- Create Assignment column-->
         <div class="col-lg-4">
 			<a href="teacherprompt.php">
-				<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+				<img class="img-circle" src="resources/images/paper.jpg" alt="Generic placeholder image" width="140" height="140">
 			</a>
 		  <h2>Create an Assignment</h2>
           <p>Here you can create an assignment for a specific class.</p>
-          <p><a class="btn btn-default" href="teacherprompt.php" role="button">View details &raquo;</a></p>
+          <p><a class="btn btn-default" href="teacherPrompt.php" role="button">View details &raquo;</a></p>
         </div><!-- Grade Assignments Column -->
         <div class="col-lg-4">
 			<a href="gradeselect.php">
-				<img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+				<img class="img-circle" src="resources/images/check.png" alt="Generic placeholder image" width="140" height="140">
 			</a>
           <h2>Grade Assignments</h2>
           <p>Want to grade some of your assignments? <br>Go here!
